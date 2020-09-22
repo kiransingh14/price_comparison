@@ -13,3 +13,9 @@ def registerPage(request):                                                  #cre
             form.save()
     context = {'form' : form}
     return render(request , 'price_comparison/register.html' , context)
+
+
+
+def loginPage(request):
+    context={}
+    return render(request , 'price_comparison/login.html',context)
