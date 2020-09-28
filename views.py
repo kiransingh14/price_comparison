@@ -11,6 +11,10 @@ from .models import *
 from .forms import  CreateUserForm
 
 
+def homePage(request):
+    context={}
+    return render(request,'price_comparison/home.html',context)
+
 
 def registerPage(request):                                                  #create a registration form                                          
     form = CreateUserForm()
@@ -37,5 +41,13 @@ def loginPage(request):
         if user is not None:
             login(request,user)
             return redirect('home')
+        else:
+            messages.info(request,'Username OR Password is incorrect')
+            
     context={}
     return render(request , 'price_comparison/login.html',context)
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
