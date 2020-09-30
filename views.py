@@ -51,3 +51,8 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+
+def saveitemPage(request):
+    context={}
+    return render(request,'price_comparison/saveitems.html',context)
