@@ -5,5 +5,8 @@ from django import forms
 User = get_user_model()
 
 class find(models.Model):
-    searchobject=models.CharField(max_length=100)
-    save=models.BooleanField(default=False)
+    searchitem=models.CharField(max_length=100)
+    search=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.searchitem
