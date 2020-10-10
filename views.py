@@ -11,9 +11,24 @@ from .models import *
 from .forms import  CreateUserForm
 
 
+
+
+data = []
+
+
+# Create your views here.
+
 def homePage(request):
-    context={}
-    return render(request,'price_comparison/home.html',context)
+    context = {}
+    return render(request,'price_comparison/index.html',context)
+
+
+def resultPage(request):
+    context = {}
+    return render(request,'price_comparison/result.html',context)
+
+
+
 
 
 def registerPage(request):                                                  #create a registration form                                          
