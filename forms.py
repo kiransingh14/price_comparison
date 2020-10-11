@@ -5,7 +5,16 @@ from django.contrib.auth.models import User
 
 from .models import *
 
+class  ShopForm(forms.ModelForm):
+
+    class Meta:
+
+        model = shop
+        fields='__all__'
+
 class CreateUserForm(UserCreationForm):
+    
     class Meta:
         model = User
         fields = ['username','email','password1','password2']
+

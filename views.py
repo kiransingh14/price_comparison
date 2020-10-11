@@ -8,7 +8,7 @@ from django.contrib import messages
 
 from .models import *
 
-from .forms import  CreateUserForm
+from .forms import  *
 
 
 
@@ -19,6 +19,9 @@ data = []
 # Create your views here.
 
 def homePage(request):
+    shops = shop.objects.all()
+
+    form = ShopForm()
     context = {}
     return render(request,'price_comparison/index.html',context)
 
