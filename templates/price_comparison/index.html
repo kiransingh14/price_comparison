@@ -1,5 +1,24 @@
-<form method="POST" action="/">
-    {%  csrf_token  %}
-    {{form.name}}
-    <input type="submit" name="Search item">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    
+    <h1>COMPARE & BUY</h1>
+    <form method="POST" action=" ">
+        {%  csrf_token  %}
+        {{form.name}}
+        <input type="submit" name="Search" value="Search">
+    </form>
+    {% for shop in shop%}
+        <p>{{shop}}</p>
+    {% endfor %}
+</body>
+</html>
+

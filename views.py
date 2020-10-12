@@ -22,7 +22,13 @@ def homePage(request):
     shops = shop.objects.all()
 
     form = ShopForm()
-    context = {}
+    if request.method=='POST':
+        form = ShopForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('result')
+    context = {'shops':shops ,'form' :form}
+    
     return render(request,'price_comparison/index.html',context)
 
 
@@ -43,6 +49,7 @@ def registerPage(request):                                                  #cre
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request,'Account was created for '+ user)
+            return redirect('login')
     context = {'form' : form}
     return render(request , 'price_comparison/register.html' , context)
 
@@ -58,7 +65,7 @@ def loginPage(request):
         
         if user is not None:
             login(request,user)
-            return redirect('home')
+            return redirect('index')
         else:
             messages.info(request,'Username OR Password is incorrect')
             

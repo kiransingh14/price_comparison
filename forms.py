@@ -6,9 +6,8 @@ from django.contrib.auth.models import User
 from .models import *
 
 class  ShopForm(forms.ModelForm):
-
+    name = forms.CharField(widget = forms.TextInput(attrs={'placeholder':'Search the item...'}))
     class Meta:
-
         model = shop
         fields='__all__'
 
