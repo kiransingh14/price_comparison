@@ -1,3 +1,5 @@
+{% load static  %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,20 +7,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+		body,
+		html {
+            background-image:url('{{ STATIC_URL }}photos/logoo.PNG');
+            background-repeat: no-repeat;
+			height: 100%;
+			width: 100%;
+            background:#BCEDAE!important;
+            background-size:100%;
+		}
+        img{
+            background-size: 100% 100%;
+            align-items: center;
+            padding-left: 17%;
+        }
         
+        form{
+            align-items: center;
+        }
+        .sidenav{
+            background-color:#79c4ba;
+            display: none;
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+            padding-top: 60px;
+        }
+        span{
+            color:black ;
+        }
+        .sidenav.openNav{
+            color:#79c4ba ;
+        }
+        .closebtn{
+            position: absolute;
+            color: black;
+            margin-top: 0%;
+            right: 25px;
+            font-size: 40px;
+            margin-left: 50px;
+
+        }
+        .sidenav a{
+            padding: 30px 28px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: rgb(6, 82, 65);
+            display: block;
+        }
+        .sidenav a:hover{
+            color:blanchedalmond;
+        }
     </style>
 </head>
-<body>
-    
-    <h1>COMPARE & BUY</h1>
-    <form method="POST" action=" ">
-        {%  csrf_token  %}
-        {{form.name}}
-        <input type="submit" name="Search" value="Search">
-    </form>
+<body >
+    <div id="hamburger" class="sidenav">
+        <img alt="logo" src="{% static '/photos/Capture.PNG' %}" style="height: 100px;width: 100px;">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="saveitems.html">SAVE</a>
+        <a href="login.html">LOGIN</a>
+        <a href="register.html">REGISTER</a>
+        
+        
+    </div>
+   
+    <span style="font-size: 30px;cursor:pointer" onclick="openNav()"> 
+        &#9776
+    </span>
+    <div class="f"></div>
+        <form method="POST" action=" ">
+            {%  csrf_token  %}
+            {{form.name}}
+            <input type="submit" name="Search" value="Search">
+        </form>
+    </div>
     {% for shop in shop%}
         <p>{{shop}}</p>
     {% endfor %}
+    
+    <script>
+        function openNav(){
+            document.getElementById("hamburger").style.display="block";
+        }
+        function closeNav(){
+            document.getElementById("hamburger").style.display="none";
+        }
+        
+    </script>
+
 </body>
 </html>
 
