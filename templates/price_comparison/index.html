@@ -9,22 +9,21 @@
     <style>
 		body,
 		html {
-            background-image:url('{{ STATIC_URL }}photos/logoo.PNG');
+            
             background-repeat: no-repeat;
 			height: 100%;
 			width: 100%;
-            background:#BCEDAE!important;
+            background:#BCEDAE!important; 
             background-size:100%;
 		}
         img{
             background-size: 100% 100%;
             align-items: center;
             padding-left: 17%;
+         
         }
         
-        form{
-            align-items: center;
-        }
+       
         .sidenav{
             background-color:#79c4ba;
             display: none;
@@ -39,6 +38,9 @@
         }
         span{
             color:black ;
+            bottom: 0%;
+            bottom:50%;
+            margin-left: 0%;
         }
         .sidenav.openNav{
             color:#79c4ba ;
@@ -46,11 +48,11 @@
         .closebtn{
             position: absolute;
             color: black;
-            margin-top: 0%;
-            right: 25px;
+            margin-top: -90%;
+            right: 0px;
             font-size: 40px;
             margin-left: 50px;
-
+            text-decoration: solid;
         }
         .sidenav a{
             padding: 30px 28px 8px 32px;
@@ -62,29 +64,98 @@
         .sidenav a:hover{
             color:blanchedalmond;
         }
+        #image1{
+            
+            margin-right: 50px;
+            margin-left:120px;
+            top:0%;
+            width: 70%;
+            height:70%;
+            justify-content: center;
+            
+            margin-top: auto;
+			margin-bottom: auto;
+            position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+        }
+        #f{
+            display: table; 
+            
+            justify-content: center;
+            z-index: 1;
+            margin-top: auto;
+			margin-bottom: auto;
+            position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+
+			border-radius: 5px;
+            height: 100px;
+            width:100px;
+            margin-left: 32%;
+            margin-bottom: 160%;
+            margin-top: -5%;
+            
+        }
+        #f input{
+            align-content: center;
+            width: 400px;
+            height: 30px;
+            border-radius: 5px;
+            
+        }
+        #inputs{
+            display: inline-block;
+            display: table-cell; 
+            width: 1px; 
+            white-space: nowrap;
+            margin-left: 30%;
+            margin-bottom:40%;
+        }
+        #input2{
+            display: inline-block;
+            display: table-cell; 
+            padding: 0 4px 0 6px;
+            margin-left: 30%;
+            margin-bottom:40%;
+        }
+       
     </style>
 </head>
 <body >
     <div id="hamburger" class="sidenav">
-        <img alt="logo" src="{% static '/photos/Capture.PNG' %}" style="height: 100px;width: 100px;">
+        <img alt="logo" src="{% static '/photos/Capture.PNG' %}" style="height: 150px;width: 150px;">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="index.html">HOME</a>
-        <a href="about.html">ABOUT</a>
-        <a href="saveitems.html">SAVE</a>
-        <a href="login.html">LOGIN</a>
-        <a href="register.html">REGISTER</a>
-        
-        
+        <a href="{% url 'index' %}">HOME</a>
+        <a href="{% url 'about' %}">ABOUT</a>
+        <a href="{% url 'save' %}">SAVE</a>
+        <a href="{% url 'login' %}">LOGIN</a>
+        <a href="{% url 'register' %}">REGISTER</a>
     </div>
-   
     <span style="font-size: 30px;cursor:pointer" onclick="openNav()"> 
         &#9776
-    </span>
-    <div class="f"></div>
+        </span>
+    <div id="image1">
+        
+        <img  alt="logo1" src="{% static '/photos/main.PNG' %}" > 
+    </div>
+    
+    
+    <div id="f">
         <form method="POST" action=" ">
             {%  csrf_token  %}
-            {{form.name}}
-            <input type="submit" name="Search" value="Search">
+            <div id="inputs">
+                {{form.name}}
+            </div>  
+            <div id="input2">
+            <input type="submit" name="Search" value="Search" style="width: 75px;">
+            </div>
+
         </form>
     </div>
     {% for shop in shop%}

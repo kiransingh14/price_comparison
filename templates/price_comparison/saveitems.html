@@ -1,0 +1,91 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+		body,
+		html {
+            
+            background-repeat: no-repeat;
+			height: 100%;
+			width: 100%;
+            background:#BCEDAE!important; 
+            background-size:100%;
+		}
+        img{
+            background-size: 100% 100%;
+            align-items: center;
+            padding-left: 17%;
+         
+        }  
+		.sidenav{
+            background-color:#79c4ba;
+            display: none;
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+            padding-top: 60px;
+        }
+        span{
+            color:black ;
+            bottom: 0%;
+            bottom:50%;
+            margin-left: 0%;
+        }
+        .sidenav.openNav{
+            color:#79c4ba ;
+        }
+        .closebtn{
+            position: absolute;
+            color: black;
+            margin-top: -90%;
+            right: 0px;
+            font-size: 40px;
+            margin-left: 50px;
+            text-decoration: solid;
+        }
+        .sidenav a{
+            padding: 30px 28px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: rgb(6, 82, 65);
+            display: block;
+        }
+        .sidenav a:hover{
+            color:blanchedalmond;
+        }  
+    </style>
+</head>
+<body>
+	<div id="hamburger" class="sidenav">
+        <img alt="logo" src="{% static '/photos/Capture.PNG' %}" style="height: 150px;width: 150px;">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{% url 'index' %}">HOME</a>
+        <a href="{% url 'about' %}">ABOUT</a>
+        <a href="{% url 'save' %}">SAVE</a>
+        <a href="{% url 'login' %}">LOGIN</a>
+        <a href="{% url 'register' %}">REGISTER</a>
+    </div>
+    <span style="font-size: 30px;cursor:pointer" onclick="openNav()"> 
+        &#9776
+	</span>
+	
+    <script>
+        function openNav(){
+            document.getElementById("hamburger").style.display="block";
+        }
+        function closeNav(){
+            document.getElementById("hamburger").style.display="none";
+        }
+        
+    </script>
+	
+</body>
+</html>

@@ -81,3 +81,7 @@ def logoutUser(request):
 def saveitemPage(request):
     context={}
     return render(request,'price_comparison/saveitems.html',context)
+
+def aboutPage(request):
+    context={}
+    return render(request,'price_comparison/about.html',context)
