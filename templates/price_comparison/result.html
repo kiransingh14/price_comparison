@@ -55,12 +55,107 @@
             padding: 30px 28px 8px 32px;
             text-decoration: none;
             font-size: 25px;
-            color: rgb(6, 82, 65);
+            color: rgb(2, 35, 36);
             display: block;
         }
         .sidenav a:hover{
             color:blanchedalmond;
         }  
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        nav{
+            margin-top:-3%;
+            z-index: 1;
+            height: 8vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            
+            background-color:#79c4ba ;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+       .logo{
+           color: rgb(9, 58, 9);
+           margin-left: 5%;
+           letter-spacing: 2px;
+           font-size: 40px;
+           display: inline-block;
+       }
+
+        
+        .nav-links{
+            display: flex;
+            
+            list-style: none;
+            justify-content:space-around;
+            width:35%;
+            height: 100%;
+            align-items: center;
+            margin-right: auto;
+        }
+        .nav-links li a{
+            color:rgb(2, 35, 36);
+            font-size: 20px;
+            text-decoration: none;
+            
+        }
+        .nav-links li  a:hover{
+            color:blanchedalmond;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .line{
+                width: 30px;
+                height: 3px;
+                background-color: white;
+                margin: 5px;
+
+            }
+            nav{
+                position: relative;
+            }
+            .hamburger{
+                position: absolute;
+                cursor: pointer;
+                right: 5%;
+                top:50%;
+                transform: translate(-5%,-50%);
+            }
+           .nav-links{
+               position: fixed;
+               background-color:#79c4ba  ;
+               height: 100vh;
+               width: 100%;
+               flex-direction: column;
+                clip-path: circle(100px at 90% -10%);
+           }
+        }
+        #hello-ms{
+            color: rgb(2, 35, 36);
+            font-size: 20px;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        #logout{
+            color:rgb(2, 35, 36) ;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        #logout a{
+            color: rgb(2, 35, 36) ;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        #logout a:hover{
+            color:blanchedalmond;
+            text-decoration: none;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -86,6 +181,29 @@
         }
         
     </script>
-	
+	<nav>
+        <div class="logo">
+        
+            
+            <h4>SmartCarT</h4>        
+        </div>
+            <ul class="nav-links">
+    
+                <li><a href="{% url 'index' %}">HOME</a></li>
+                <li><a href="{% url 'about' %}">ABOUT</a></li>
+                <li><a href="{% url 'save' %}">SAVE</a></li>
+                <li><a href="{% url 'login' %}">LOGIN</a></li>
+                <li><a href="{% url 'register' %}">REGISTER</a></li>
+            </ul>
+        
+       
+        </div>
+        <span id="hello-ms">
+            Hello, {{request.user}}
+        </span>
+        <span id="logout">
+            <a href="{% url 'logout' %}">Logout</a>
+        </span>
+        </nav>
 </body>
 </html>

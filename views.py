@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render , redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 
@@ -72,12 +72,12 @@ def loginPage(request):
     context={}
     return render(request , 'price_comparison/login.html',context)
 
-
+@login_required(login_url='login')
 def logoutUser(request):
     logout(request)
     return redirect('login')
 
-
+@login_required(login_url='login')
 def saveitemPage(request):
     context={}
     return render(request,'price_comparison/saveitems.html',context)
