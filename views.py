@@ -4,7 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.core.mail import send_mail
+from django.conf import settings
 
 from .models import *
 
@@ -18,21 +19,22 @@ data = []
 
 # Create your views here.
 
-def homePage(request):
+def homePage(request):                                                #home page view
     shops = shop.objects.all()
 
     form = ShopForm()
     if request.method=='POST':
         form = ShopForm(request.POST)
+        message = request.POST['message']
+        send_mail('Contact Form',message, settings.EMAIL_HOST_USER,['smartcart1411@gmail.com'], fail_silently=False)
         if form.is_valid():
             form.save()
             return redirect('result')
     context = {'shops':shops ,'form' :form}
-    
     return render(request,'price_comparison/index.html',context)
 
 
-def resultPage(request):
+def resultPage(request):                                             #result page
     context = {}
     return render(request,'price_comparison/result.html',context)
 
@@ -40,11 +42,11 @@ def resultPage(request):
 
 
 
-def registerPage(request):                                                  #create a registration form                                          
+def registerPage(request):                                          # a registration form                                          
     form = CreateUserForm()
 
     if request.method == 'POST':
-        form = CreateUserForm(request.POST)
+        form = CreateUserForm(request.POST) 
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
@@ -55,7 +57,7 @@ def registerPage(request):                                                  #cre
 
 
 
-def loginPage(request):
+def loginPage(request):                                            # a login form
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -72,16 +74,16 @@ def loginPage(request):
     context={}
     return render(request , 'price_comparison/login.html',context)
 
-@login_required(login_url='login')
+@login_required(login_url='login')                                 # a logout
 def logoutUser(request):
     logout(request)
     return redirect('login')
 
 @login_required(login_url='login')
-def saveitemPage(request):
+def saveitemPage(request):                                          #saved product
     context={}
     return render(request,'price_comparison/saveitems.html',context)
 
-def aboutPage(request):
+def aboutPage(request):                                            #about page
     context={}
     return render(request,'price_comparison/about.html',context)
