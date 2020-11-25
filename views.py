@@ -25,15 +25,16 @@ def homePage(request):                                                #home page
     form = ShopForm()
     if request.method=='POST':
         form = ShopForm(request.POST)
-        message = request.POST['message']
-        send_mail('Contact Form',message, settings.EMAIL_HOST_USER,['smartcart1411@gmail.com'], fail_silently=False)
+       
         if form.is_valid():
             form.save()
             return redirect('result')
     context = {'shops':shops ,'form' :form}
     return render(request,'price_comparison/index.html',context)
 
-
+def contact(request):
+    context = {}
+    return render(request,'price_comparison/index.html',context)
 def resultPage(request):                                             #result page
     context = {}
     return render(request,'price_comparison/result.html',context)

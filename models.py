@@ -9,3 +9,12 @@ class shop(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Product(models.Model):
+    product_name = models.CharField(max_length=50)
+    price = models.IntegerField(default=0)
+    image = models.ImageField(upload_to ='price_comparison', default="")
+
+    def __str__(self):
+        return self.product_name

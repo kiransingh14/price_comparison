@@ -390,18 +390,21 @@
   </style>
 </head>
 <body >
+
+
     <div id="hamburger" class="sidenav">
         <img alt="logo" src="{% static '/photos/Capture.PNG' %}" style="height: 200px;width: 200px;">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="{% url 'index' %}">HOME</a>
         <a href="{% url 'about' %}">ABOUT</a>
-        <a href="{% url 'save' %}">SAVE</a>
         <a href="{% url 'login' %}">LOGIN</a>
         <a href="{% url 'register' %}">REGISTER</a>
     </div>
+
+
     <span style="font-size: 30px;cursor:pointer" onclick="openNav()"> 
         &#9776
-	</span>
+	  </span>
 	
     <script>
         function openNav(){
@@ -411,35 +414,36 @@
             document.getElementById("hamburger").style.display="none";
         }
     </script>
-    <nav>
-    <div class="logo">
-    <h4>SmartCarT</h4>        
-    </div>
-        <ul class="nav-links">
 
+
+    <nav>
+      <div class="logo">
+        <h4>SmartCarT</h4>        
+      </div>
+        <ul class="nav-links">
             <li><a href="{% url 'index' %}">HOME</a></li>
             <li><a href="{% url 'about' %}">ABOUT</a></li>
-            <li><a href="{% url 'save' %}">SAVE</a></li>
             <li><a href="{% url 'login' %}">LOGIN</a></li>
             <li><a href="{% url 'register' %}">REGISTER</a></li>
         </ul>
-    </div>
-    <span id="hello-ms">
+      </div>
+
+      <span id="hello-ms">
         Hello, {{request.user}}
-    </span>
-    <span id="logout">
+      </span>
+
+      <span id="logout">
         <a href="{% url 'logout' %}">Logout</a>
-    </span>
+      </span>
+
     </nav>
     <section class="landing">
         <div id="image1">
-        
             <img  alt="logo1" src="{% static '/photos/pic.PNG' %}" > 
         </div>
     
-    
         <div id="f">
-            <form method="POST" action=" ">
+              <form method="POST" action=" ">
                 {%  csrf_token  %}
                 <div id="inputs">
                     {{form.name}}
@@ -447,8 +451,7 @@
                 <div id="input2">
                     <input type="submit" name="Search" value="Search" style="width: 75px;">
                 </div>
-
-            </form>
+              </form>
         </div>
             {% for shop in shop%}
             <p>{{shop}}</p>
@@ -456,50 +459,51 @@
     
     </section>
     
-  <footer>
+    <footer>
         <div class="main-content">
           <div class="left box">
-            <h2>
-  About us</h2>
-  <div class="content">
+            <h2>About us</h2>
+            <div class="content">
               <p>
-  SMartCART is a price comparison website helps you to go through two to three website simultaneously for checking  product's price and compare them accordingly.SMartCart is not a shopping site it only help you to analyse the price data of product . </p>
-  <div class="social">
-                <a href="p"><span class="fab fa-facebook-f"></span></a>
-                <a href="#"><span class="fab fa-twitter"></span></a>
-                <a href=""><span class="fab fa-instagram"></span></a>
+                SMartCART is a price comparison website helps you to go through two to three website simultaneously for checking  product's price and compare them accordingly.SMartCart is not a shopping site it only help you to analyse the price data of product .
+              </p>
+              <div class="social">
+                <a href="https://www.facebook.com/drawpurplevibes"><span class="fab fa-facebook-f"></span></a>
+                <a href="https://twitter.com/Kiri96777252"><span class="fab fa-twitter"></span></a>
+                <a href="https://www.instagram.com/drawpurplevibes/"><span class="fab fa-instagram"></span></a>
                 
               </div>
-  </div>
-  </div>
+            </div>
+          </div>
   
-  <div class="right box">
-            <h2>
-  Contact us</h2>
-  <div class="content">
-              <form method="post" action="{% url 'index' %}">
+          <div class="right box">
+            <h2>Contact us</h2>
+            <div class="content">
+              <form method="post" action="/price_comparison/index/">
                 {% csrf_token %}
                 <div class="email">
-                  <div class="text">
-  </div>
-  
+                  <div class="text">Email*</div>
+                  <input type="email" name="email" required>
                 </div>
-  <div class="msg">
-                  <div class="text">
-  Message *</div>
+                  <div class="msg">
+                    <div class="text">Message *</div>
   
-  <textarea id=".msgForm" rows="2" cols="25" name="message" placeholder="Message..." ></textarea> 
+                        <textarea id=".msgForm" rows="2" cols="25" name="message" placeholder="Message..." ></textarea> 
                 
-                <br />
-  <div class="btn">
-  <button type="submit">Send</button>
-                </div>
-  <div class="bottom">
-  <center>
-            <span class="credit">Created By <a href="https://github.com/kiransingh14">Kiran Singh</a> | </span>
-            <span class="far fa-copyright"></span> 2020 All rights reserved.
-          </center>
-  </div>
+                        <br />
+                        <div class="btn">
+                          <button type="submit">Send</button>
+                         </div>
+                        <div class="bottom">
+                          <center>
+                                  <span class="credit">Created By <a href="https://github.com/kiransingh14">Kiran Singh</a> | </span>
+                                  <span class="far fa-copyright"></span> 2020 All rights reserved.
+                          </center>
+                        </div>
+                      </div>
+                  </div>
+
+</footer>
 </body>
 </html>
 
