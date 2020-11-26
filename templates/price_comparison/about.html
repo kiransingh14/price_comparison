@@ -158,6 +158,27 @@
             text-decoration: none;
             font-size: 20px;
         }
+        .about {
+          color: rgb(9, 58, 9);
+          width: auto;
+          height: auto;
+          font-size: 20px;
+          margin-right:150px;
+          margin-left: 150px;
+          margin-top: 100px;
+        }
+        .about img{
+          float: right;
+          width: 70%;
+          height:70%;
+        }
+        .about h2{
+          align-content: center;
+        }
+        .about p{
+          font-family: sans-serif,Arial, Helvetica, sans-serif;
+
+        }
         footer{
           position: relative;
           left: 0%;
@@ -356,6 +377,20 @@
             <a href="{% url 'logout' %}">Logout</a>
         </span>
         </nav>
+      <div class="about">
+        <h2>About us</h2>
+        <img  alt="logo1" src="{% static '/photos/pic.PNG' %}" > 
+      </BR>
+    </br>
+       <p>
+        SMartCART is a price comparison website helps you to go through two to three website simultaneously for checking  product's price and compare them accordingly.SMartCart is not a shopping site it only help you to analyse the price data of product .
+       </br>
+        Price comparison websites are becoming more popular since E-commerce revolution. The data and values provide by the price comparison sites helps consumers to save money while shopping online. The ability to check the price of products brings convenience and saves a lot of time. Price comparison is done when the price of the same product is compared in different outlets. There are many online shopping sites which are being used to shop various products online. A particular product has different prices on every different shopping site. We need to check manually the price of the product on every site, which causes inconvenience and consumes a lot of time. 
+      </br>
+      SmartCarT will help to overcome this problem.
+
+       </p>
+      </div>
 	    <footer>
             <div class="main-content">
               <div class="left box">
