@@ -496,6 +496,9 @@
                           <button type="submit">Send</button>
                          </div>
                         <div class="bottom">
+                          {% for Contact in Contact %}
+                          <p>{{Contact}}</p>
+                          {% endfor %}
                           <center>
                                   <span class="credit">Created By <a href="https://github.com/kiransingh14">Kiran Singh</a> | </span>
                                   <span class="far fa-copyright"></span> 2020 All rights reserved.

@@ -36,9 +36,13 @@ def contact(request):
     if request.method=='POST':
         email = request.POST.get('name','')
         message = request.POST.get('name','')
+        
         contact = Contact(email = email , message = message)
         contact.save()
     return render(request,'price_comparison/index.html')
+
+
+
 def resultPage(request):                                             #result page
     context = {}
     return render(request,'price_comparison/result.html',context)
