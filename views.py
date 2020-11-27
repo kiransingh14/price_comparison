@@ -7,6 +7,8 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 
+from .shopclues import *
+from .amazon_in import *
 from .models import *
 
 from .forms import  *
@@ -44,11 +46,26 @@ def contact(request):
 
 
 def resultPage(request):                                             #result page
-    context = {}
-    return render(request,'price_comparison/result.html',context)
+    if 'name' in request.POST:
+        del extracted_data_amazon_india[:]
+        del extracted_data_shopclues[:]
+        hello = str(request.POST['query'])
+        data = hello.split(",")
+        i = 0
+        while i < len(data):
+            print("Inside link no" + str(i))
+            Initial_shopclues(data[i])
+            initialamazon_India(data[i])
+            i = i + 1
+        print("Hello finally out")
 
-
-
+        print(extracted_data_shopclues)
+        print (extracted_data_amazon_india)
+    datamatch=zip(extracted_data_amazon_india,extracted_data_shopclues)
+    context = {'datamatch':  datamatch}
+    return render(request, 'price_comparison/result.html', context)
+    
+        
 
 
 def registerPage(request):                                          # a registration form                                          
